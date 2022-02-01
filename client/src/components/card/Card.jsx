@@ -4,8 +4,13 @@ import "./card.css";
 function Card({ post, socket, user }) {
   const [liked, setLiked] = useState(false);
 
-  const handleNotification = () => {
-    setLiked(true);
+  const handleNotification = (type) => {
+    type === 1 && setLiked(true);
+    socket.emit("sendNotification", {
+      senderName: user,
+      receiverName: post.username,
+      type,
+    });
   };
 
   return (
@@ -26,15 +31,21 @@ function Card({ post, socket, user }) {
 
       <div className="interaction">
         {liked ? (
-          <i class="fas fa-heart cardIcon"></i>
+          <i className="fas fa-heart cardIcon"></i>
         ) : (
           <i
             className="far fa-heart cardIcon"
-            onClick={handleNotification}
+            onClick={() => handleNotification(1)}
           ></i>
         )}
-        <i className="far fa-comment-dots cardIcon"></i>
-        <i className="fas fa-external-link-alt cardIcon"></i>
+        <i
+          className="far fa-comment-dots cardIcon"
+          onClick={() => handleNotification(2)}
+        ></i>
+        <i
+          className="fas fa-external-link-alt cardIcon"
+          onClick={() => handleNotification(3)}
+        ></i>
         <i className="fas fa-info-circle infoIcon"></i>
       </div>
     </div>

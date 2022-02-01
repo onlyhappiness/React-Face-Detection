@@ -14,7 +14,6 @@ function App() {
   // 클라이언트에서 서버 socket을 연결
   useEffect(() => {
     // const socket = io("http://localhost:5000");
-
     // http://localhost:5000에 이벤트를 보냄
     setSocket(io("http://localhost:5000"));
   }, []);
@@ -22,8 +21,6 @@ function App() {
   useEffect(() => {
     // socket이 있을 때 서버에 이벤트를 보냄
     socket?.emit("newUser", user);
-    // console.log("socket========", socket);
-    // console.log("user======", user);
   }, [socket, user]);
 
   return (

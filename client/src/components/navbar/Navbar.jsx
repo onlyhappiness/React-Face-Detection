@@ -1,7 +1,25 @@
-import React from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 import "./navbar.css";
 
-function Navbar() {
+function Navbar({ socket }) {
+  const [notification, setNotification] =
+    useState([]);
+
+  useEffect(() => {
+    socket.on("getNotification", (data) => {
+      // setNotification([...notification, data]);
+      setNotification((prev) => [...prev, data]);
+    });
+  }, [socket]);
+
+  console.log(
+    "notification=======",
+    notification
+  );
+
   return (
     <div className="navbar">
       <span className="logo">Realtime App</span>
