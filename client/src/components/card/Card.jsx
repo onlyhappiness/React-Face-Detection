@@ -10,6 +10,7 @@ function Card({ post, socket, user }) {
       senderName: user,
       receiverName: post.username,
       type,
+      // text: "연결됨ㅋㅋ",
     });
   };
 
