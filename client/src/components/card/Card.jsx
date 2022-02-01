@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./card.css";
 
-function Card({ post }) {
+function Card({ post, socket, user }) {
   const [liked, setLiked] = useState(false);
 
   const handleNotification = () => {
