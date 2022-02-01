@@ -13,6 +13,10 @@ function Card({ post, socket, user }) {
     });
   };
 
+  console.log("socket=======", socket);
+
+  console.log("소켓 id==========", socket.id);
+
   return (
     <div className="card">
       <div className="info">

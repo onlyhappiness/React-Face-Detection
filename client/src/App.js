@@ -21,6 +21,11 @@ function App() {
   useEffect(() => {
     // socket이 있을 때 서버에 이벤트를 보냄
     socket?.emit("newUser", user);
+
+    console.log(
+      "클라이언트에서 보내는 user",
+      user
+    );
   }, [socket, user]);
 
   return (
